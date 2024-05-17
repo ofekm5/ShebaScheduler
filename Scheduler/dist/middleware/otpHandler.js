@@ -18,7 +18,7 @@ const otpHandler = (req, res, next) => {
                 const decoded = jsonwebtoken_1.default.verify(token, tokenPrivateKey);
                 if (otp == "T220397") {
                     logger_1.default.info(`verified user ${decoded.userID} OTP`);
-                    return res.json({ otp: 'valid' });
+                    return res.status(201).json({ message: 'OTP valid' });
                 }
                 else {
                     logger_1.default.error(`wrong OTP for ${decoded.userID}`);
