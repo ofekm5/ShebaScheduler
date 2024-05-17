@@ -1,48 +1,15 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { Router } from 'express';
 import logger from './logger';
+import apiRouter from './middleware/apiRouter';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
-const router = Router();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-interface UserInfo {
-    userName: string;
-    password: string;
-}
+app.use(express.json());
 
-interface TokenResponse {
-    token: number;
-  }
-  
-
-router.get('/login', (req: Request<{}, {}, {}, UserInfo>, res: Response, next: NextFunction) => {
-    try {
-        const {userName, password} = req.query;
-
-        const response: TokenResponse = {
-            token: 
-        };
-        
-        logger.info('{userName} logged in successfully');
-        res.json(response);
-    } 
-    catch (error) {
-        next(error);
-    }
-});
-
-// router.get('/', (req: Request<{}, {}, {}, UserInfo>, res: Response, next: NextFunction) => {
-//     try {
-//         const {userName, password} = req.query;
-
-//         logger.info();
-//         res.send('Hello, TypeScript with Express!');
-//     } 
-//     catch (error) {
-//         next(error);
-//     }
-// });
+app.use('/api', apiRouter);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     logger.error(err.stack);

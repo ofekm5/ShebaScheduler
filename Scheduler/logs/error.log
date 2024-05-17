@@ -1,0 +1,110 @@
+2024-05-17T10:59:23.362Z [31merror[39m: Invalid or expired token
+2024-05-17T10:59:38.030Z [31merror[39m: Invalid or expired token
+2024-05-17T10:59:50.627Z [31merror[39m: Invalid or expired token
+2024-05-17T11:00:45.317Z [31merror[39m: Invalid or expired token
+2024-05-17T11:08:11.731Z [31merror[39m: Invalid or expired token
+2024-05-17T13:27:38.809Z [31merror[39m: TypeError: Cannot read properties of undefined (reading 'appoDate')
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:5:13)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+2024-05-17T13:28:20.585Z [31merror[39m: TypeError: Cannot read properties of undefined (reading 'appoDate')
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:5:13)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+2024-05-17T13:28:57.926Z [31merror[39m: TypeError: Cannot read properties of undefined (reading 'appoDate')
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:5:13)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+2024-05-17T13:44:39.163Z [31merror[39m: TypeError: Cannot read properties of undefined (reading 'appoDate')
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:5:13)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+2024-05-17T13:49:14.423Z [31merror[39m: TypeError: Cannot read properties of undefined (reading 'appoDate')
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:5:13)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+2024-05-17T13:51:51.839Z [31merror[39m: TypeError: Cannot read properties of undefined (reading 'appoDate')
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:5:13)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+2024-05-17T13:53:50.706Z [31merror[39m: TypeError: Cannot read properties of undefined (reading 'appoDate')
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:5:13)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:328:13)
+2024-05-17T14:28:28.239Z [31merror[39m: Error: secretOrPrivateKey must have a value
+    at module.exports [as sign] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\sign.js:111:20)
+    at loginHandler (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\userHandlers.js:18:46)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:48:5)
+2024-05-17T14:29:49.450Z [31merror[39m: Error: secretOrPrivateKey must have a value
+    at module.exports [as sign] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\sign.js:111:20)
+    at loginHandler (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\userHandlers.js:18:46)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:48:5)
+2024-05-17T14:40:14.952Z [31merror[39m: Invalid or expired token
+2024-05-17T14:40:59.652Z [31merror[39m: Invalid or expired token
+2024-05-17T14:42:33.378Z [31merror[39m: Invalid or expired token
+2024-05-17T14:42:34.350Z [31merror[39m: Invalid or expired token
+2024-05-17T14:42:35.217Z [31merror[39m: Invalid or expired token
+2024-05-17T14:44:53.238Z [31merror[39m: Invalid or expired token
