@@ -1,11 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
-import { Text, TextInput, Button } from 'react-native-paper';
+import { Text, TextInput, Button, Snackbar } from 'react-native-paper';
+import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 import logo from '../assets/ShebaLogo.png';
 
 const { width } = Dimensions.get('window');
 
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const navigation = useNavigation();
+
+  const handleSignIn = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/api/login', {
+        headers: {
+          username: username,
+          password: password,
+        },
+      });
+      if (response.status === 200) {
+        setSnackbarMessage('Sign In successful!');
+        setSnackbarVisible(true);
+        setTimeout(() => {
+          setSnackbarVisible(false);
+          navigation.navigate('OTP');
+        }, 3000);
+      } else {
+        setSnackbarMessage('Sign In failed. Please try again.');
+        setSnackbarVisible(true);
+      }
+    } catch (error) {
+      setSnackbarMessage('Sign In failed. Please try again.');
+      setSnackbarVisible(true);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -18,6 +51,8 @@ const Login = () => {
         style={styles.input}
         mode="outlined"
         theme={{ colors: { primary: '#2b296d', outline: '#2bb99b' } }}
+        value={username}
+        onChangeText={text => setUsername(text)}
       />
       <TextInput
         label="Password"
@@ -25,12 +60,14 @@ const Login = () => {
         mode="outlined"
         theme={{ colors: { primary: '#2b296d', outline: '#2bb99b' } }}
         secureTextEntry
+        value={password}
+        onChangeText={text => setPassword(text)}
       />
       <View style={styles.buttonContainer}>
         <Button 
           mode="contained" 
           style={styles.button} 
-          onPress={() => console.log('Sign In pressed')}
+          onPress={handleSignIn}
           buttonColor="#ea3e85"
         >
           Sign In
@@ -44,6 +81,13 @@ const Login = () => {
           Register
         </Button>
       </View>
+      <Snackbar
+        visible={snackbarVisible}
+        onDismiss={() => setSnackbarVisible(false)}
+        duration={3000}
+      >
+        {snackbarMessage}
+      </Snackbar>
     </View>
   );
 };

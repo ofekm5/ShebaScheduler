@@ -20,7 +20,7 @@ const otpHandler = (req: Request<{}, {}, {}, iVerifyOTP>, res: Response, next: N
             else{
                 const decoded = jwt.verify(token, tokenPrivateKey) as JwtPayload;
                 if(otp=="T220397"){
-                    logger.info(`verified user ${decoded.userID} OTP`);
+                    logger.info(`verified user ${decoded.userName} OTP`);
                     return res.status(201).json({ message: 'OTP valid' });
                 }
                 else{

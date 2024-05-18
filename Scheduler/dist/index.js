@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const db_1 = __importDefault(require("./db"));
 const logger_1 = __importDefault(require("./logger"));
 const apiRouter_1 = __importDefault(require("./middleware/apiRouter"));
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -17,8 +16,6 @@ app.use((err, req, res, next) => {
     logger_1.default.error(err.stack);
     res.status(500).send(err.message);
 });
-db_1.default.sync().then(() => {
-    app.listen(port, () => {
-        console.log(`Server is running at http://localhost:${port}`);
-    });
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
 });
