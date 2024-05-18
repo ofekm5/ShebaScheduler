@@ -3,37 +3,50 @@ import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { Text, TextInput, Button, Snackbar } from 'react-native-paper';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import logo from '../assets/ShebaLogo.png';
 
 const { width } = Dimensions.get('window');
+
+type RootStackParamList = {
+  Login: undefined;
+  OTP: { token: string };
+  Signup: undefined;
+  GetAppointments: undefined;
+};
+
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [snackbarVisible, setSnackbarVisible] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<LoginScreenNavigationProp>();
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/login', {
+      const response = await axios.get('http://10.0.0.7:3000/api/login', {
         headers: {
           username: username,
           password: password,
         },
       });
+
       if (response.status === 200) {
+        const { token } = response.data;
         setSnackbarMessage('Sign In successful!');
         setSnackbarVisible(true);
         setTimeout(() => {
           setSnackbarVisible(false);
-          navigation.navigate('OTP');
+          navigation.navigate('OTP', { token });
         }, 3000);
       } else {
         setSnackbarMessage('Sign In failed. Please try again.');
         setSnackbarVisible(true);
       }
     } catch (error) {
+      console.error('Login error:', error); // Log the error to see what went wrong
       setSnackbarMessage('Sign In failed. Please try again.');
       setSnackbarVisible(true);
     }
@@ -41,10 +54,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={logo}
-        style={styles.image}
-      />
+      <Image source={logo} style={styles.image} />
       <Text style={styles.title}>Login</Text>
       <TextInput
         label="Username"
@@ -75,7 +85,7 @@ const Login = () => {
         <Button 
           mode="contained" 
           style={styles.button} 
-          onPress={() => console.log('Register pressed')}
+          onPress={() => navigation.navigate('Signup')}
           buttonColor="#ea3e85"
         >
           Register

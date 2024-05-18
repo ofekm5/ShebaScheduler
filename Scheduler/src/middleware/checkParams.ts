@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
 const checkParams = (req: Request, res: Response, next: NextFunction)=>{
-    const { appoFilter = '', valueFilter = '' } = req.query;
     const { appoDate = '', appoType = ''} = req.body;
     const username = req.headers['username'] as string | undefined;
     const password = req.headers['password'] as string | undefined;

@@ -12,6 +12,7 @@ const loginHandler = async (req, res, next) => {
         const username = req.headers['username'];
         const password = req.headers['password'];
         const tokenPrivateKey = process.env.TOKEN_PRIVATE_KEY;
+        logger_1.default.info(`${username} request arrived`);
         const result = await db_1.default.query('SELECT EXISTS (SELECT 1 FROM "User" WHERE "userName" = $1 AND "userPass" = $2)', [username, password]);
         const exists = result.rows[0].exists;
         if (!exists) {

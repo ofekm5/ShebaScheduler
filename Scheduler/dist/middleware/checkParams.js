@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const checkParams = (req, res, next) => {
-    const { appoFilter = '', valueFilter = '' } = req.query;
     const { appoDate = '', appoType = '' } = req.body;
     const username = req.headers['username'];
     const password = req.headers['password'];

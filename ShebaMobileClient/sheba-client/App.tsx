@@ -1,3 +1,4 @@
+// App.tsx
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -6,8 +7,9 @@ import MakeAppointments from './components/MakeAppointments';
 import GetAppointments from './components/GetAppointments';
 import OTP from './components/OTP';
 import Signup from './components/Signup';
+import { RootStackParamList } from './types'; // Import RootStackParamList
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>(); // Use RootStackParamList here
 
 const App = () => {
   return (

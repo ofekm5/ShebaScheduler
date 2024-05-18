@@ -10,3 +10,25 @@
 2024-05-18T13:16:08.518Z [32minfo[39m: bushki logged in successfully
 2024-05-18T13:16:28.829Z [32minfo[39m: verified user bushki OTP
 2024-05-18T13:16:33.601Z [31merror[39m: Invalid or expired token
+2024-05-18T13:36:27.536Z [32minfo[39m: bushki signed up successfully
+2024-05-18T13:37:15.767Z [32minfo[39m: bushki logged in successfully
+2024-05-18T13:39:05.464Z [32minfo[39m: bushki logged in successfully
+2024-05-18T14:01:46.637Z [32minfo[39m: bushki signed up successfully
+2024-05-18T14:04:57.883Z [32minfo[39m: bushki logged in successfully
+2024-05-18T14:05:49.358Z [32minfo[39m: bushki signed up successfully
+2024-05-18T15:12:43.877Z [32minfo[39m: ofek signed up successfully
+2024-05-18T15:13:46.775Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:14:09.838Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:15:34.546Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:23:52.984Z [32minfo[39m: ofek request arrived
+2024-05-18T15:23:53.088Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:29:55.472Z [32minfo[39m: ofek request arrived
+2024-05-18T15:29:55.549Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:32:13.063Z [32minfo[39m: ofek request arrived
+2024-05-18T15:32:13.126Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:32:22.566Z [32minfo[39m: verified user ofek OTP
+2024-05-18T15:33:33.917Z [32minfo[39m: ofek request arrived
+2024-05-18T15:33:33.987Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:39:59.363Z [32minfo[39m: ofek request arrived
+2024-05-18T15:39:59.416Z [32minfo[39m: ofek logged in successfully
+2024-05-18T15:40:46.885Z [32minfo[39m: verified user ofek OTP
