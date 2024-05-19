@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { Text, TextInput, Button } from 'react-native-paper';
-import logo from '../assets/ShebaLogo.png';
+import logo from '@assets/ShebaLogo.png';
 
 const { width } = Dimensions.get('window');
 

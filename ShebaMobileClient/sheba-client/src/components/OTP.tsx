@@ -5,8 +5,8 @@ import { Text, TextInput, Button, Snackbar } from 'react-native-paper';
 import axios from 'axios';
 import { useNavigation, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import logo from '../assets/ShebaLogo.png';
-import { RootStackParamList } from '../types'; // Import RootStackParamList
+import logo from '@assets/ShebaLogo.png';
+import { RootStackParamList } from '../../types'; // Import RootStackParamList
 
 const { width } = Dimensions.get('window');
 
@@ -38,10 +38,10 @@ const OTP = ({ route, navigation }: Props) => {
         setSnackbarVisible(true);
         setTimeout(() => {
           setSnackbarVisible(false);
-          navigation.navigate('GetAppointments'); // Navigate to GetAppointments
+          navigation.navigate('GetAppointments', { token }); 
         }, 3000);
       } else {
-        setSnackbarMessage('OTP verification failed. Please try again. Token:' + token);
+        setSnackbarMessage('OTP verification failed. Please try again. Token:');
         setSnackbarVisible(true);
       }
     } catch (error) {

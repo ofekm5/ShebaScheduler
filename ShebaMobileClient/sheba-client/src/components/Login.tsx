@@ -4,7 +4,7 @@ import { Text, TextInput, Button, Snackbar } from 'react-native-paper';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import logo from '../assets/ShebaLogo.png';
+import logo from '@assets/ShebaLogo.png';
 
 const { width } = Dimensions.get('window');
 
@@ -46,7 +46,7 @@ const Login = () => {
         setSnackbarVisible(true);
       }
     } catch (error) {
-      console.error('Login error:', error); // Log the error to see what went wrong
+      console.error('Login error:', error); 
       setSnackbarMessage('Sign In failed. Please try again.');
       setSnackbarVisible(true);
     }

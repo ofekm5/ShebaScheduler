@@ -32,3 +32,60 @@
 2024-05-18T15:39:59.363Z [32minfo[39m: ofek request arrived
 2024-05-18T15:39:59.416Z [32minfo[39m: ofek logged in successfully
 2024-05-18T15:40:46.885Z [32minfo[39m: verified user ofek OTP
+2024-05-18T15:45:48.035Z [32minfo[39m: ofek request arrived
+2024-05-18T15:45:48.090Z [32minfo[39m: ofek logged in successfully
+2024-05-19T04:53:35.465Z [32minfo[39m: ofek signed up successfully
+2024-05-19T04:53:51.277Z [32minfo[39m: ofek logged in successfully
+2024-05-19T04:54:19.357Z [32minfo[39m: verified user ofek OTP
+2024-05-19T05:12:45.953Z [32minfo[39m: ofek logged in successfully
+2024-05-19T05:12:58.583Z [32minfo[39m: verified user ofek OTP
+2024-05-19T05:27:14.167Z [32minfo[39m: ofek logged in successfully
+2024-05-19T05:27:25.256Z [32minfo[39m: verified user ofek OTP
+2024-05-19T05:56:18.858Z [32minfo[39m: ofek logged in successfully
+2024-05-19T05:56:30.490Z [32minfo[39m: verified user ofek OTP
+2024-05-19T05:56:56.168Z [31merror[39m: TokenExpiredError: jwt expired
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:101:10)
+    at getAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:49:48)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+2024-05-19T05:57:02.632Z [32minfo[39m: ofek logged in successfully
+2024-05-19T05:57:27.505Z [32minfo[39m: verified user ofek OTP
+2024-05-19T06:00:49.752Z [32minfo[39m: verified user ofek OTP
+2024-05-19T07:18:11.863Z [31merror[39m: TokenExpiredError: jwt expired
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:101:10)
+    at setAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:19:48)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+2024-05-19T07:18:17.910Z [32minfo[39m: ofek logged in successfully
+2024-05-19T07:18:31.068Z [32minfo[39m: verified user ofek OTP
+2024-05-19T07:19:48.047Z [31merror[39m: TokenExpiredError: jwt expired
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:101:10)
+    at getAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:49:48)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+2024-05-19T08:09:50.418Z [32minfo[39m: ofek logged in successfully
+2024-05-19T08:10:01.278Z [32minfo[39m: verified user ofek OTP
+2024-05-19T08:17:29.809Z [32minfo[39m: ofek logged in successfully
+2024-05-19T08:17:41.916Z [32minfo[39m: verified user ofek OTP
+2024-05-19T08:25:49.569Z [32minfo[39m: ofek logged in successfully
+2024-05-19T08:26:29.250Z [32minfo[39m: verified user ofek OTP
+2024-05-19T08:32:17.632Z [32minfo[39m: ofek logged in successfully
+2024-05-19T08:32:27.510Z [32minfo[39m: verified user ofek OTP

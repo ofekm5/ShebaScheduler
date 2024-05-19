@@ -1,9 +1,9 @@
 // types.ts
 export type RootStackParamList = {
     Login: undefined;
-    MakeAppointments: undefined;
     OTP: { token: string };
-    GetAppointments: undefined;
     Signup: undefined;
+    GetAppointments: { token: string };
+    SetAppointments: { token: string };
   };
   
