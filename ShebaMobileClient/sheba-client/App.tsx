@@ -1,4 +1,3 @@
-// App.tsx
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -10,7 +9,7 @@ import Signup from './src/components/Signup';
 import { RootStackParamList } from './types'; 
 import { Provider as PaperProvider } from 'react-native-paper';
 
-const Stack = createStackNavigator<RootStackParamList>(); // Use RootStackParamList here
+const Stack = createStackNavigator<RootStackParamList>(); 
 
 const App = () => {
   return (

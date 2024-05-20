@@ -1,4 +1,3 @@
-// OTP.tsx
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { Text, TextInput, Button, Snackbar } from 'react-native-paper';
@@ -6,13 +5,13 @@ import axios from 'axios';
 import { useNavigation, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import logo from '@assets/ShebaLogo.png';
-import { RootStackParamList } from '../../types'; // Import RootStackParamList
+import { RootStackParamList } from '../../types'; 
+import { API_BASE_URL } from '@env'; 
 
 const { width } = Dimensions.get('window');
 
 type OTPScreenRouteProp = RouteProp<RootStackParamList, 'OTP'>;
 type OTPScreenNavigationProp = StackNavigationProp<RootStackParamList, 'OTP'>;
-
 type Props = {
   route: OTPScreenRouteProp;
   navigation: OTPScreenNavigationProp;
@@ -26,7 +25,7 @@ const OTP = ({ route, navigation }: Props) => {
 
   const handleOTP = async () => {
     try {
-      const response = await axios.get('http://10.0.0.7:3000/api/verifyOTP', {
+      const response = await axios.get(`${API_BASE_URL}/api/verifyOTP`, {
         headers: {
           otp: otp,
           token: token,
@@ -39,12 +38,14 @@ const OTP = ({ route, navigation }: Props) => {
         setTimeout(() => {
           setSnackbarVisible(false);
           navigation.navigate('GetAppointments', { token }); 
-        }, 3000);
-      } else {
+        }, 2000);
+      } 
+      else {
         setSnackbarMessage('OTP verification failed. Please try again. Token:');
         setSnackbarVisible(true);
       }
-    } catch (error) {
+    } 
+    catch (error) {
       setSnackbarMessage('OTP verification failed. Please try again.');
       setSnackbarVisible(true);
     }

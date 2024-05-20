@@ -7,17 +7,16 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../types';
 import moment from 'moment';
+import { API_BASE_URL } from '@env'; 
 
 const { width } = Dimensions.get('window');
 
 type GetAppointmentsScreenRouteProp = RouteProp<RootStackParamList, 'GetAppointments'>;
 type GetAppointmentsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'GetAppointments'>;
-
 type Props = {
   route: GetAppointmentsScreenRouteProp;
   navigation: GetAppointmentsScreenNavigationProp;
 };
-
 
 const GetAppointments = ({ route, navigation }: Props) => {
   const { token } = route.params;
@@ -26,7 +25,7 @@ const GetAppointments = ({ route, navigation }: Props) => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get('http://10.0.0.7:3000/api/getAppo', {
+        const response = await axios.get(`${API_BASE_URL}/api/getAppo`, {
           headers: {
             token: token,
           },
@@ -34,10 +33,12 @@ const GetAppointments = ({ route, navigation }: Props) => {
 
         if (response.status === 200) {
           setAppointments(response.data.appointments);
-        } else {
+        } 
+        else {
           console.log('Failed to fetch appointments.');
         }
-      } catch (error) {
+      } 
+      catch (error) {
         console.error('Error fetching appointments:', error);
       }
     };

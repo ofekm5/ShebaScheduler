@@ -7,6 +7,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import logo from '@assets/ShebaLogo.png';
+import { API_BASE_URL } from '@env'; 
 
 const { height } = Dimensions.get('window');
 
@@ -43,7 +44,7 @@ const SetAppointments = () => {
       };
 
       try {
-        const response = await axios.post('http://10.0.0.7:3000/api/setAppo', appointment);
+        const response = await axios.post(`${API_BASE_URL}/api/setAppo`, appointment);
         console.log('Appointment scheduled:', response.data);
       } catch (error) {
         console.error('Error scheduling appointment:', error);

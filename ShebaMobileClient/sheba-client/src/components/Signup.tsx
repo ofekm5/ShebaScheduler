@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { Text, TextInput, Button } from 'react-native-paper';
 import logo from '@assets/ShebaLogo.png';
+import { API_BASE_URL } from '@env'; 
 
 const { width } = Dimensions.get('window');
 

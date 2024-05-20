@@ -5,16 +5,10 @@ import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import logo from '@assets/ShebaLogo.png';
+import { RootStackParamList } from '../../types'; 
+import { API_BASE_URL } from '@env'; 
 
 const { width } = Dimensions.get('window');
-
-type RootStackParamList = {
-  Login: undefined;
-  OTP: { token: string };
-  Signup: undefined;
-  GetAppointments: undefined;
-};
-
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
 const Login = () => {
@@ -26,7 +20,7 @@ const Login = () => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.get('http://10.0.0.7:3000/api/login', {
+      const response = await axios.get(`${API_BASE_URL}/api/login`, {
         headers: {
           username: username,
           password: password,
@@ -40,12 +34,14 @@ const Login = () => {
         setTimeout(() => {
           setSnackbarVisible(false);
           navigation.navigate('OTP', { token });
-        }, 3000);
-      } else {
+        }, 2000);
+      } 
+      else {
         setSnackbarMessage('Sign In failed. Please try again.');
         setSnackbarVisible(true);
       }
-    } catch (error) {
+    } 
+    catch (error) {
       console.error('Login error:', error); 
       setSnackbarMessage('Sign In failed. Please try again.');
       setSnackbarVisible(true);
