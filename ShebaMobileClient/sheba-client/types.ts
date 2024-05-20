@@ -5,4 +5,3 @@ export type RootStackParamList = {
   GetAppointments: { token: string };
   SetAppointments: { token: string };
 };
-  

@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
-import { Text, Button } from 'react-native-paper';
+import { Text, Button, Snackbar } from 'react-native-paper';
 import DropDown from 'react-native-paper-dropdown';
 import { Calendar } from 'react-native-calendars';
 import axios from 'axios';
 import moment from 'moment';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import logo from '@assets/ShebaLogo.png';
-import { API_BASE_URL } from '@env'; 
+import { API_BASE_URL } from '@env';
+import { RootStackParamList } from '../../types';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const { height } = Dimensions.get('window');
 
-const SetAppointments = () => {
+type SetAppointmentsScreenRouteProp = RouteProp<RootStackParamList, 'SetAppointments'>;
+type SetAppointmentsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'SetAppointments'>;
+type Props = {
+  route: SetAppointmentsScreenRouteProp;
+  navigation: SetAppointmentsScreenNavigationProp;
+};
+
+const SetAppointments = ({ route, navigation }: Props) => {
+  const { token } = route.params;
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [timeDropdownVisible, setTimeDropdownVisible] = useState(false);
+  const [typeDropdownVisible, setTypeDropdownVisible] = useState(false);
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
 
   const times = [
     { label: '08:00 AM', value: '08:00' },
-    { label: '10:00 AM', value: '10:00' },
-    { label: '12:00 PM', value: '12:00' },
+    { label: '12:00 AM', value: '12:00' },
+    { label: '16:00 PM', value: '16:00' },
   ];
 
   const appoType = [
@@ -31,7 +45,6 @@ const SetAppointments = () => {
 
   const handleDayPress = (day: { dateString: string }) => {
     setSelectedDate(day.dateString);
-    setShowDropdown(true);
   };
 
   const handleScheduleAppointment = async () => {
@@ -44,51 +57,76 @@ const SetAppointments = () => {
       };
 
       try {
-        const response = await axios.post(`${API_BASE_URL}/api/setAppo`, appointment);
-        console.log('Appointment scheduled:', response.data);
+        const response = await axios.post(`${API_BASE_URL}/api/setAppo`, appointment, {
+          headers: {
+            token: token,
+          },
+        });
+
+        if (response.status === 201) {
+          setSnackbarMessage('Appointment scheduled successfully.');
+          setSnackbarVisible(true);
+          setTimeout(() => {
+            setSnackbarVisible(false);
+          }, 2000);
+        } else {
+          setSnackbarMessage('Failed to schedule appointment. Please try again.');
+          setSnackbarVisible(true);
+          setTimeout(() => {
+            setSnackbarVisible(false);
+          }, 2000);
+        }
       } catch (error) {
         console.error('Error scheduling appointment:', error);
+        setSnackbarMessage('Failed to schedule appointment. Please try again.');
+        setSnackbarVisible(true);
+        setTimeout(() => {
+          setSnackbarVisible(false);
+        }, 2000);
       }
     } else {
-      console.log('Please select date, time, and type.');
+      setSnackbarMessage('Please select date, time, and type.');
+      setSnackbarVisible(true);
+      setTimeout(() => {
+        setSnackbarVisible(false);
+      }, 2000);
     }
   };
 
   return (
-    <KeyboardAwareScrollView style={styles.container} extraHeight={200}>
+    <KeyboardAwareScrollView
+      contentContainerStyle={styles.container}
+      extraHeight={200}
+    >
       <Image source={logo} style={styles.image} />
       <Text style={styles.title}>Schedule Appointment</Text>
       <Calendar onDayPress={handleDayPress} />
-      {showDropdown && (
-        <>
-          <DropDown
-            label="Select Time"
-            mode="outlined"
-            value={selectedTime}
-            setValue={setSelectedTime}
-            list={times}
-            visible={showDropdown}
-            showDropDown={() => setShowDropdown(true)}
-            onDismiss={() => setShowDropdown(false)}
-            inputProps={{
-              style: pickerSelectStyles.input,
-            }}
-          />
-          <DropDown
-            label="Select Appointment Type"
-            mode="outlined"
-            value={selectedType}
-            setValue={setSelectedType}
-            list={appoType}
-            visible={showDropdown}
-            showDropDown={() => setShowDropdown(true)}
-            onDismiss={() => setShowDropdown(false)}
-            inputProps={{
-              style: pickerSelectStyles.input,
-            }}
-          />
-        </>
-      )}
+      <DropDown
+        label="Select Time"
+        mode="outlined"
+        value={selectedTime}
+        setValue={setSelectedTime}
+        list={times}
+        visible={timeDropdownVisible}
+        showDropDown={() => setTimeDropdownVisible(true)}
+        onDismiss={() => setTimeDropdownVisible(false)}
+        inputProps={{
+          style: pickerSelectStyles.input,
+        }}
+      />
+      <DropDown
+        label="Select Appointment Type"
+        mode="outlined"
+        value={selectedType}
+        setValue={setSelectedType}
+        list={appoType}
+        visible={typeDropdownVisible}
+        showDropDown={() => setTypeDropdownVisible(true)}
+        onDismiss={() => setTypeDropdownVisible(false)}
+        inputProps={{
+          style: pickerSelectStyles.input,
+        }}
+      />
       <Button
         mode="contained"
         style={styles.button}
@@ -97,24 +135,31 @@ const SetAppointments = () => {
       >
         Schedule
       </Button>
+      <Snackbar
+        visible={snackbarVisible}
+        onDismiss={() => setSnackbarVisible(false)}
+        duration={3000}
+      >
+        {snackbarMessage}
+      </Snackbar>
     </KeyboardAwareScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     padding: '5%',
     backgroundColor: '#fff',
   },
   image: {
-    width: height * 0.25,
-    height: height * 0.25,
+    width: height * 0.15,
+    height: height * 0.15,
     marginBottom: '5%',
     alignSelf: 'center',
   },
   title: {
-    fontSize: 32,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: '5%',
     textAlign: 'center',

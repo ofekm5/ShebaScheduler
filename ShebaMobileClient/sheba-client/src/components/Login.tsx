@@ -39,6 +39,9 @@ const Login = () => {
       else {
         setSnackbarMessage('Sign In failed. Please try again.');
         setSnackbarVisible(true);
+        setTimeout(() => {
+          setSnackbarVisible(false);
+        }, 2000);
       }
     } 
     catch (error) {

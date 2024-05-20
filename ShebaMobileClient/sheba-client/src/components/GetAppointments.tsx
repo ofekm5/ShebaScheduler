@@ -48,8 +48,8 @@ const GetAppointments = ({ route, navigation }: Props) => {
 
   const renderItem = ({ item }: { item: any }) => (
     <View style={styles.appointmentItem}>
-      <Text>{item.testType}</Text>
-      <Text>{moment(item.date).format('DD-MM-YYYY HH:mm')}</Text>
+      <Text style={styles.testTypeText}>{item.testType}</Text>
+      <Text style={styles.dateText}>{moment(item.date).format('DD-MM-YYYY HH:mm')}</Text>
     </View>
   );
 
@@ -102,6 +102,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
+  testTypeText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  dateText: {
+    fontSize: 16,
+    color: '#666',
+  }
 });
 
 export default GetAppointments;

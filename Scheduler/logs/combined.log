@@ -89,3 +89,25 @@
 2024-05-19T08:26:29.250Z [32minfo[39m: verified user ofek OTP
 2024-05-19T08:32:17.632Z [32minfo[39m: ofek logged in successfully
 2024-05-19T08:32:27.510Z [32minfo[39m: verified user ofek OTP
+2024-05-20T11:55:30.990Z [32minfo[39m: ofek signed up successfully
+2024-05-20T11:55:35.913Z [32minfo[39m: ofek logged in successfully
+2024-05-20T12:10:33.773Z [32minfo[39m: ofek logged in successfully
+2024-05-20T12:10:46.283Z [32minfo[39m: verified user ofek OTP
+2024-05-20T12:11:49.578Z [32minfo[39m: verified user ofek OTP
+2024-05-20T12:23:37.803Z [32minfo[39m: ofek logged in successfully
+2024-05-20T12:23:49.336Z [32minfo[39m: verified user ofek OTP
+2024-05-20T12:33:06.254Z [31merror[39m: Error: invalid token
+    at setAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:17:19)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+    at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:33:5)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+2024-05-20T12:49:36.241Z [32minfo[39m: ofek logged in successfully
+2024-05-20T12:49:47.240Z [32minfo[39m: verified user ofek OTP
+2024-05-20T12:52:25.883Z [32minfo[39m: ofek signed up successfully
+2024-05-20T12:52:29.722Z [32minfo[39m: ofek logged in successfully
