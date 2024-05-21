@@ -53,13 +53,26 @@ const signupHandler = async (req: Request<{}, {}, {}, iUser>, res: Response, nex
         const password = req.headers['password'] as string | undefined;
 
         try {
-            const result = await pool.query(
-                'INSERT INTO "User" ("userName", "userPass") VALUES ($1, $2) RETURNING *',
+
+            const existsAlready = await pool.query(
+                'SELECT EXISTS (SELECT 1 FROM "User" WHERE "userName" = $1 AND "userPass" = $2)',
                 [username, password]
-              );
-              
-            logger.info(`${username} signed up successfully`);
-            return res.json(result.rows[0]);
+            );
+    
+            const exists = existsAlready.rows[0].exists;
+    
+            if (exists) {
+                return res.status(401).json({ error: 'User already exists' });
+            }
+            else{
+                const result = await pool.query(
+                    'INSERT INTO "User" ("userName", "userPass") VALUES ($1, $2) RETURNING *',
+                    [username, password]
+                  );
+                  
+                logger.info(`${username} signed up successfully`);
+                return res.json(result.rows[0]);
+            }
         } 
         catch (error) {
             return res.status(500).json({ error: 'Failed to create user' });

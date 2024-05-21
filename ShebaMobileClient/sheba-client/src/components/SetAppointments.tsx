@@ -101,32 +101,34 @@ const SetAppointments = ({ route, navigation }: Props) => {
       <Image source={logo} style={styles.image} />
       <Text style={styles.title}>Schedule Appointment</Text>
       <Calendar onDayPress={handleDayPress} />
-      <DropDown
-        label="Select Time"
-        mode="outlined"
-        value={selectedTime}
-        setValue={setSelectedTime}
-        list={times}
-        visible={timeDropdownVisible}
-        showDropDown={() => setTimeDropdownVisible(true)}
-        onDismiss={() => setTimeDropdownVisible(false)}
-        inputProps={{
-          style: pickerSelectStyles.input,
-        }}
-      />
-      <DropDown
-        label="Select Appointment Type"
-        mode="outlined"
-        value={selectedType}
-        setValue={setSelectedType}
-        list={appoType}
-        visible={typeDropdownVisible}
-        showDropDown={() => setTypeDropdownVisible(true)}
-        onDismiss={() => setTypeDropdownVisible(false)}
-        inputProps={{
-          style: pickerSelectStyles.input,
-        }}
-      />
+      <View style={styles.dropdownContainer}>
+        <DropDown
+          label="Select Time"
+          mode="outlined"
+          value={selectedTime}
+          setValue={setSelectedTime}
+          list={times}
+          visible={timeDropdownVisible}
+          showDropDown={() => setTimeDropdownVisible(true)}
+          onDismiss={() => setTimeDropdownVisible(false)}
+          inputProps={{
+            style: pickerSelectStyles.input,
+          }}
+        />
+        <DropDown
+          label="Select Appointment Type"
+          mode="outlined"
+          value={selectedType}
+          setValue={setSelectedType}
+          list={appoType}
+          visible={typeDropdownVisible}
+          showDropDown={() => setTypeDropdownVisible(true)}
+          onDismiss={() => setTypeDropdownVisible(false)}
+          inputProps={{
+            style: pickerSelectStyles.input,
+          }}
+        />
+      </View>
       <Button
         mode="contained"
         style={styles.button}
@@ -157,6 +159,9 @@ const styles = StyleSheet.create({
     height: height * 0.15,
     marginBottom: '5%',
     alignSelf: 'center',
+  },
+  dropdownContainer: {
+    marginBottom: 20,
   },
   title: {
     fontSize: 25,

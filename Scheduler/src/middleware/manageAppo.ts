@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import pool from '../db';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import logger from '../logger';
 
 interface iSetAppo{
     appoDate?: string; 
@@ -25,6 +26,7 @@ const setAppo = async (req: Request<{}, {}, iSetAppo, iToken>, res: Response, ne
         const decoded = jwt.verify(token, tokenPrivateKey) as JwtPayload;
         const userResult = await pool.query(userQuery, [decoded.userName]);
         if (userResult.rows.length === 0) {
+            logger.error('User not found');
             return res.status(404).json({ error: 'User not found' });
         }
   
@@ -38,7 +40,8 @@ const setAppo = async (req: Request<{}, {}, iSetAppo, iToken>, res: Response, ne
         const appointmentValues = [userID, appoDate, appoType];
         const appointmentResult = await pool.query(appointmentQuery, appointmentValues);
     
-        res.status(201).json({
+        logger.info('Appointment created successfully');
+        return res.status(201).json({
             message: 'Appointment created successfully',
             appointment: appointmentResult.rows[0],
         });

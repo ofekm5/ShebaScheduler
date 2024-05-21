@@ -45,7 +45,7 @@ const Login = () => {
       }
     } 
     catch (error) {
-      console.error('Login error:', error); 
+      //console.error('Login error:', error); 
       setSnackbarMessage('Sign In failed. Please try again.');
       setSnackbarVisible(true);
     }

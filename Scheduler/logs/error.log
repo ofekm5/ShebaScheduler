@@ -44,3 +44,15 @@
     at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
     at checkParams (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\checkParams.js:33:5)
     at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+2024-05-21T14:04:40.019Z [31merror[39m: TokenExpiredError: jwt expired
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:190:21
+    at getSecret (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:101:10)
+    at setAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:20:48)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+2024-05-21T15:51:00.378Z [31merror[39m: wrong OTP for undefined

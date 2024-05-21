@@ -37,9 +37,16 @@ const signupHandler = async (req, res, next) => {
         const username = req.headers['username'];
         const password = req.headers['password'];
         try {
-            const result = await db_1.default.query('INSERT INTO "User" ("userName", "userPass") VALUES ($1, $2) RETURNING *', [username, password]);
-            logger_1.default.info(`${username} signed up successfully`);
-            return res.json(result.rows[0]);
+            const existsAlready = await db_1.default.query('SELECT EXISTS (SELECT 1 FROM "User" WHERE "userName" = $1 AND "userPass" = $2)', [username, password]);
+            const exists = existsAlready.rows[0].exists;
+            if (exists) {
+                return res.status(401).json({ error: 'User already exists' });
+            }
+            else {
+                const result = await db_1.default.query('INSERT INTO "User" ("userName", "userPass") VALUES ($1, $2) RETURNING *', [username, password]);
+                logger_1.default.info(`${username} signed up successfully`);
+                return res.json(result.rows[0]);
+            }
         }
         catch (error) {
             return res.status(500).json({ error: 'Failed to create user' });

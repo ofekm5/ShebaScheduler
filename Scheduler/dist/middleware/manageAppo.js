@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.setAppo = exports.getAppo = void 0;
 const db_1 = __importDefault(require("../db"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const logger_1 = __importDefault(require("../logger"));
 const setAppo = async (req, res, next) => {
     try {
         const tokenPrivateKey = process.env.TOKEN_PRIVATE_KEY;
@@ -19,6 +20,7 @@ const setAppo = async (req, res, next) => {
         const decoded = jsonwebtoken_1.default.verify(token, tokenPrivateKey);
         const userResult = await db_1.default.query(userQuery, [decoded.userName]);
         if (userResult.rows.length === 0) {
+            logger_1.default.error('User not found');
             return res.status(404).json({ error: 'User not found' });
         }
         const userID = userResult.rows[0].userID;
@@ -29,7 +31,8 @@ const setAppo = async (req, res, next) => {
         `;
         const appointmentValues = [userID, appoDate, appoType];
         const appointmentResult = await db_1.default.query(appointmentQuery, appointmentValues);
-        res.status(201).json({
+        logger_1.default.info('Appointment created successfully');
+        return res.status(201).json({
             message: 'Appointment created successfully',
             appointment: appointmentResult.rows[0],
         });
