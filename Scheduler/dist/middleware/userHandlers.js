@@ -12,33 +12,37 @@ const loginHandler = async (req, res, next) => {
         const username = req.headers['username'];
         const password = req.headers['password'];
         const tokenPrivateKey = process.env.TOKEN_PRIVATE_KEY;
-        const result = await db_1.default.query('SELECT EXISTS (SELECT 1 FROM "User" WHERE "userName" = $1 AND "userPass" = $2)', [username, password]);
-        const exists = result.rows[0].exists;
+        const exists = await checkIfExistsInDB(username, password);
         if (!exists) {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
-        const payload = {
-            userName: username
-        };
-        const token = jsonwebtoken_1.default.sign(payload, tokenPrivateKey, { expiresIn: '1h' });
-        const response = {
-            token
-        };
-        logger_1.default.info(`${username} logged in successfully`);
-        return res.json(response);
+        else {
+            const payload = {
+                userName: username
+            };
+            const token = jsonwebtoken_1.default.sign(payload, tokenPrivateKey, { expiresIn: '1h' });
+            const response = {
+                token
+            };
+            logger_1.default.info(`${username} logged in successfully`);
+            return res.json(response);
+        }
     }
     catch (error) {
         next(error);
     }
 };
 exports.loginHandler = loginHandler;
+async function checkIfExistsInDB(username, password) {
+    const result = await db_1.default.query('SELECT EXISTS (SELECT 1 FROM "User" WHERE "userName" = $1 AND "userPass" = $2)', [username, password]);
+    return result.rows[0].exists;
+}
 const signupHandler = async (req, res, next) => {
     try {
         const username = req.headers['username'];
         const password = req.headers['password'];
         try {
-            const existsAlready = await db_1.default.query('SELECT EXISTS (SELECT 1 FROM "User" WHERE "userName" = $1 AND "userPass" = $2)', [username, password]);
-            const exists = existsAlready.rows[0].exists;
+            const exists = await checkIfExistsInDB(username, password);
             if (exists) {
                 return res.status(401).json({ error: 'User already exists' });
             }

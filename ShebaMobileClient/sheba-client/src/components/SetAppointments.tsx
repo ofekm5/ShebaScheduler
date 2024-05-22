@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   dropdownContainer: {
-    marginBottom: 20,
+    //marginBottom: 20,
   },
   title: {
     fontSize: 25,
