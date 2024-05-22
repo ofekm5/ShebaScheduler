@@ -67,3 +67,29 @@
 2024-05-22T17:02:16.095Z [31merror[39m: wrong OTP for undefined
 2024-05-22T17:15:36.354Z [31merror[39m: Appointment already taken
 2024-05-22T17:40:32.767Z [31merror[39m: wrong OTP for undefined
+2024-05-22T18:15:55.784Z [31merror[39m: error: column "appoDate" does not exist
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:25:30)
+2024-05-22T18:29:11.906Z [31merror[39m: 2024-05-27T09:00:00.000Z
+2024-05-22T18:29:11.916Z [31merror[39m: Otorhinolaryngology
+2024-05-22T18:30:04.010Z [31merror[39m: 2024-05-27T13:00:00.000Z
+2024-05-22T18:30:04.011Z [31merror[39m: Orthopedics
+2024-05-22T18:30:11.274Z [31merror[39m: 2024-05-31T13:00:00.000Z
+2024-05-22T18:30:11.277Z [31merror[39m: Acupuncture
+2024-05-22T18:32:09.792Z [31merror[39m: wrong OTP for undefined
+2024-05-22T18:32:32.560Z [31merror[39m: 2024-05-31T09:00:00.000Z
+2024-05-22T18:32:32.562Z [31merror[39m: Acupuncture
+2024-05-22T18:33:51.300Z [31merror[39m: 2024-05-30T06:00:00.000Z
+2024-05-22T18:33:51.303Z [31merror[39m: Orthopedics
+2024-05-22T18:47:10.880Z [31merror[39m: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:70:17)
+    at findUserID (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:86:44)
+    at getAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:104:34)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)

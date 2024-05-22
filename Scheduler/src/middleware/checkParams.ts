@@ -23,7 +23,7 @@ const checkParams = (req: Request, res: Response, next: NextFunction)=>{
             return res.status(400).json({ error: 'Missing token' });
         }
     }
-    else if (req.path === '/appointment' && req.method=='POST') {
+    else if (req.path === '/appointment' && (req.method=='POST' || req.method=='DELETE')) {
         if(!appoType){
             return res.status(400).json({ error: 'Missing appointment type' });
         }

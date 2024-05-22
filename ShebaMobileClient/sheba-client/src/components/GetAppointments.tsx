@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Image, Dimensions, FlatList } from 'react-native';
-import { Text, Button, Snackbar } from 'react-native-paper';
+import { Text, Button, Snackbar, IconButton } from 'react-native-paper';
 import axios from 'axios';
 import logo from '@assets/ShebaLogo.png';
 import { RouteProp, useFocusEffect } from '@react-navigation/native';
@@ -31,22 +31,20 @@ const GetAppointments = ({ route, navigation }: Props) => {
           token: token,
         },
         validateStatus: function (status) {
-          return status >= 200 && status < 300 || status === 404; 
+          return status >= 200 && status < 300 || status === 404;
         }
       });
 
       if (response.status === 200) {
         setAppointments(response.data.appointments);
-      } 
-      else if (response.status === 404) {
+      } else if (response.status === 404) {
         setSnackbarMessage('Appointments not found');
         setSnackbarVisible(true);
         setTimeout(() => {
           setSnackbarVisible(false);
         }, 2000);
-      } 
-    } 
-    catch (error) {
+      }
+    } catch (error) {
       if (error instanceof Error) {
         setSnackbarMessage(`Error fetching appointments: ${error.message}`);
       } else {
@@ -65,10 +63,62 @@ const GetAppointments = ({ route, navigation }: Props) => {
     }, [token])
   );
 
+  const handleDeleteAppointment = async (itemDate: string, itemTestType: string) => {
+    try {
+      const appointment = {
+        appoDate: itemDate,
+        appoType: itemTestType,
+      };
+  
+      const response = await axios.delete(`${API_BASE_URL}/api/appointment`, {
+        headers: {
+          token: token,
+        },
+        data: appointment,
+        validateStatus: function (status) {
+          return status >= 200 && status < 300 || status === 404;
+        }
+      });
+  
+      if (response.status === 200) {
+        setSnackbarMessage('Appointment deleted successfully');
+        setSnackbarVisible(true);
+        setTimeout(() => {
+          setSnackbarVisible(false);
+          setAppointments(prevAppointments => prevAppointments.filter(app => app.date !== itemDate || app.testType !== itemTestType)); 
+        }, 2000);
+      } else if (response.status === 404) {
+        setSnackbarMessage('Appointment not found');
+        setSnackbarVisible(true);
+        setTimeout(() => {
+          setSnackbarVisible(false);
+        }, 2000);
+      }
+    } 
+    catch (error) {
+      if (error instanceof Error) {
+        setSnackbarMessage(`Error deleting appointment: ${error.message}`);
+      } else {
+        setSnackbarMessage('Error deleting appointment');
+      }
+      setSnackbarVisible(true);
+      setTimeout(() => {
+        setSnackbarVisible(false);
+      }, 1000);
+    }
+  };
+  
+
   const renderItem = ({ item }: { item: any }) => (
     <View style={styles.appointmentItem}>
       <Text style={styles.testTypeText}>{item.testType}</Text>
       <Text style={styles.dateText}>{moment(item.date).tz('Asia/Jerusalem').format('DD-MM-YYYY HH:mm')}</Text>
+      <IconButton
+        icon="delete"
+        iconColor="#ea3e85"
+        size={20}
+        onPress={() => handleDeleteAppointment(item.date, item.testType)}
+      />
     </View>
   );
 
@@ -125,19 +175,23 @@ const styles = StyleSheet.create({
     color: '#2b296d',
   },
   appointmentItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
   testTypeText: {
-    fontSize: 18,
+    fontSize: 13,
     fontWeight: 'bold',
     color: '#333',
+    flex: 1,
   },
   dateText: {
     fontSize: 16,
     color: '#666',
-  }
+    flex: 1,
+  },
 });
 
 export default GetAppointments;

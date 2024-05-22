@@ -40,7 +40,7 @@ const SetAppointments = ({ route, navigation }: Props) => {
 
   const appoType = [
     { label: 'Acupuncture', value: 'Acupuncture' },
-    { label: 'Otorhinolaryngology', value: 'Otorhinolaryngology' },
+    { label: 'Orthopedics', value: 'Orthopedics' },
     { label: 'Physiotherapy', value: 'Physiotherapy' },
   ];
 

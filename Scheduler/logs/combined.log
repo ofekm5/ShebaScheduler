@@ -237,3 +237,58 @@
 2024-05-22T17:42:13.449Z [32minfo[39m: Appointment created successfully
 2024-05-22T17:42:24.632Z [32minfo[39m: Appointment created successfully
 2024-05-22T17:42:34.655Z [32minfo[39m: Appointment created successfully
+2024-05-22T18:15:10.120Z [32minfo[39m: ofek signed up successfully
+2024-05-22T18:15:18.037Z [32minfo[39m: ofek logged in successfully
+2024-05-22T18:15:28.592Z [32minfo[39m: verified user ofek OTP
+2024-05-22T18:15:46.438Z [32minfo[39m: Appointment created successfully
+2024-05-22T18:15:55.784Z [31merror[39m: error: column "appoDate" does not exist
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:25:30)
+2024-05-22T18:17:58.518Z [32minfo[39m: Appointment created successfully
+2024-05-22T18:20:24.606Z [32minfo[39m: Appointment created successfully
+2024-05-22T18:23:44.855Z [32minfo[39m: ofek logged in successfully
+2024-05-22T18:23:54.391Z [32minfo[39m: verified user ofek OTP
+2024-05-22T18:29:11.906Z [31merror[39m: 2024-05-27T09:00:00.000Z
+2024-05-22T18:29:11.916Z [31merror[39m: Otorhinolaryngology
+2024-05-22T18:30:04.010Z [31merror[39m: 2024-05-27T13:00:00.000Z
+2024-05-22T18:30:04.011Z [31merror[39m: Orthopedics
+2024-05-22T18:30:11.274Z [31merror[39m: 2024-05-31T13:00:00.000Z
+2024-05-22T18:30:11.277Z [31merror[39m: Acupuncture
+2024-05-22T18:31:58.750Z [32minfo[39m: ofek signed up successfully
+2024-05-22T18:32:02.250Z [32minfo[39m: ofek logged in successfully
+2024-05-22T18:32:09.792Z [31merror[39m: wrong OTP for undefined
+2024-05-22T18:32:14.741Z [32minfo[39m: verified user ofek OTP
+2024-05-22T18:32:28.906Z [32minfo[39m: Appointment created successfully
+2024-05-22T18:32:32.560Z [31merror[39m: 2024-05-31T09:00:00.000Z
+2024-05-22T18:32:32.562Z [31merror[39m: Acupuncture
+2024-05-22T18:33:47.269Z [32minfo[39m: Appointment created successfully
+2024-05-22T18:33:51.300Z [31merror[39m: 2024-05-30T06:00:00.000Z
+2024-05-22T18:33:51.303Z [31merror[39m: Orthopedics
+2024-05-22T18:44:14.278Z [32minfo[39m: ofek signed up successfully
+2024-05-22T18:44:22.265Z [32minfo[39m: ofek logged in successfully
+2024-05-22T18:44:33.580Z [32minfo[39m: verified user ofek OTP
+2024-05-22T18:44:44.437Z [32minfo[39m: Appointment created successfully
+2024-05-22T18:45:57.625Z [32minfo[39m: verified user ofek OTP
+2024-05-22T18:46:24.344Z [32minfo[39m: ofek logged in successfully
+2024-05-22T18:47:10.880Z [31merror[39m: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\jsonwebtoken\verify.js:70:17)
+    at findUserID (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:86:44)
+    at getAppo (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\dist\middleware\manageAppo.js:104:34)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+2024-05-22T18:56:26.841Z [32minfo[39m: ofek logged in successfully
+2024-05-22T18:56:35.967Z [32minfo[39m: verified user ofek OTP
+2024-05-22T18:57:01.955Z [32minfo[39m: ofek logged in successfully
+2024-05-22T19:09:25.351Z [32minfo[39m: ofek signed up successfully
+2024-05-22T19:09:34.875Z [32minfo[39m: ofek logged in successfully
+2024-05-22T19:09:44.598Z [32minfo[39m: verified user ofek OTP
+2024-05-22T19:09:55.474Z [32minfo[39m: Appointment created successfully
+2024-05-22T19:09:59.272Z [32minfo[39m: Appointment deleted successfully
+2024-05-22T19:10:16.654Z [32minfo[39m: Appointment created successfully
+2024-05-22T19:10:26.968Z [32minfo[39m: Appointment deleted successfully

@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import pool from '../db';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import logger from '../logger';
+import moment from 'moment-timezone';
 
 interface iSetAppo{
     appoDate?: string; 
@@ -12,6 +13,49 @@ interface iToken{
     token?:string;
 }
 
+const deleteAppo = async (req: Request<{}, {}, iSetAppo, iToken>, res: Response, next: NextFunction) => {
+    try {
+        const appoDate = req.body.appoDate;
+        const appoType = req.body.appoType;
+        const token = req.headers['token'] as string | undefined;
+
+        const userResult = await findUserID(token);
+
+        if (userResult.rows.length === 0) {
+            logger.error('User not found');
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const userID = userResult.rows[0].userID;
+        
+        if(appoDate){
+            const parsedDate = moment.tz(appoDate, moment.ISO_8601, 'Asia/Jerusalem').format('YYYY-MM-DD HH:mm:ss');
+            
+            const deleteQuery = `
+                DELETE FROM "Appointment"
+                WHERE "userID" = $1 AND "date" = $2 AND "testType" = $3
+                RETURNING *;
+            `;
+    
+            const deleteResult = await pool.query(deleteQuery, [userID, parsedDate, appoType]);
+    
+            if (deleteResult.rows.length > 0) {
+                logger.info('Appointment deleted successfully');
+                res.status(200).json({ message: 'Appointment deleted successfully', appointment: deleteResult.rows[0] });
+            } else {
+                logger.error('Appointment not found');
+                return res.status(404).json({ error: 'Appointment not found' });
+            }
+        }
+        else{
+            throw new Error('appoDate invalid');
+        }
+        
+    } catch (error) {
+        console.error('Error deleting appointment:', error);
+        next(error);
+    }
+};
 
 const setAppo = async (req: Request<{}, {}, iSetAppo, iToken>, res: Response, next: NextFunction) => {
     try {
@@ -106,4 +150,4 @@ const getAppo = async (req: Request<{}, {}, {}, iToken>, res: Response, next: Ne
     }
 }
 
-export {getAppo, setAppo};
+export {getAppo, setAppo, deleteAppo};
