@@ -22,7 +22,7 @@ const checkParams = (req, res, next) => {
             return res.status(400).json({ error: 'Missing token' });
         }
     }
-    else if (req.path === '/setAppo') {
+    else if (req.path === '/appointment' && req.method == 'POST') {
         if (!appoType) {
             return res.status(400).json({ error: 'Missing appointment type' });
         }

@@ -71,9 +71,14 @@ const getAppo = async (req, res, next) => {
             SELECT * FROM "Appointment" WHERE "userID" = $1;
         `;
         const appointmentsResult = await db_1.default.query(appointmentsQuery, [userID]);
-        res.status(200).json({
-            appointments: appointmentsResult.rows,
-        });
+        if (appointmentsResult.rows.length > 0) {
+            res.status(200).json({
+                appointments: appointmentsResult.rows,
+            });
+        }
+        else {
+            return res.status(404).json({ error: 'Appointments not found' });
+        }
     }
     catch (error) {
         next(error);

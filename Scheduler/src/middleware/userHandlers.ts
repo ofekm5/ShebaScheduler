@@ -14,7 +14,8 @@ interface iUser {
 
 const loginHandler = async (req: Request<{}, {}, {}, iUser>, res: Response, next: NextFunction) => {
     try {
-        const username = req.headers['username'] as string | undefined;
+        const initialUsername = req.headers['username'] as string | undefined;
+        const username = initialUsername?.toLowerCase();
         const password = req.headers['password'] as string | undefined;
         const tokenPrivateKey = process.env.TOKEN_PRIVATE_KEY as string;
         const exists = await checkIfExistsInDB(username, password);
@@ -51,7 +52,8 @@ async function checkIfExistsInDB(username:string | undefined, password:string | 
 
 const signupHandler = async (req: Request<{}, {}, {}, iUser>, res: Response, next: NextFunction) => {
     try {
-        const username = req.headers['username'] as string | undefined;
+        const initialUsername = req.headers['username'] as string | undefined;
+        const username = initialUsername?.toLowerCase();
         const password = req.headers['password'] as string | undefined;
 
         try {

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Image, Dimensions, FlatList } from 'react-native';
-import { Text, Button } from 'react-native-paper';
+import { Text, Button, Snackbar } from 'react-native-paper';
 import axios from 'axios';
 import logo from '@assets/ShebaLogo.png';
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, useFocusEffect } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../types';
-import moment from 'moment';
-import { API_BASE_URL } from '@env'; 
+import { API_BASE_URL } from '@env';
+import moment from 'moment-timezone';
 
 const { width } = Dimensions.get('window');
 
@@ -21,35 +21,54 @@ type Props = {
 const GetAppointments = ({ route, navigation }: Props) => {
   const { token } = route.params;
   const [appointments, setAppointments] = useState<any[]>([]);
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
 
-  useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/api/getAppo`, {
-          headers: {
-            token: token,
-          },
-        });
-
-        if (response.status === 200) {
-          setAppointments(response.data.appointments);
-        } 
-        else {
-          console.log('Failed to fetch appointments.');
+  const fetchAppointments = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/api/appointment`, {
+        headers: {
+          token: token,
+        },
+        validateStatus: function (status) {
+          return status >= 200 && status < 300 || status === 404; 
         }
-      } 
-      catch (error) {
-        console.error('Error fetching appointments:', error);
-      }
-    };
+      });
 
-    fetchAppointments();
-  }, [token]);
+      if (response.status === 200) {
+        setAppointments(response.data.appointments);
+      } 
+      else if (response.status === 404) {
+        setSnackbarMessage('Appointments not found');
+        setSnackbarVisible(true);
+        setTimeout(() => {
+          setSnackbarVisible(false);
+        }, 2000);
+      } 
+    } 
+    catch (error) {
+      if (error instanceof Error) {
+        setSnackbarMessage(`Error fetching appointments: ${error.message}`);
+      } else {
+        setSnackbarMessage('Error fetching appointments');
+      }
+      setSnackbarVisible(true);
+      setTimeout(() => {
+        setSnackbarVisible(false);
+      }, 2000);
+    }
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchAppointments();
+    }, [token])
+  );
 
   const renderItem = ({ item }: { item: any }) => (
     <View style={styles.appointmentItem}>
       <Text style={styles.testTypeText}>{item.testType}</Text>
-      <Text style={styles.dateText}>{moment(item.date).format('DD-MM-YYYY HH:mm')}</Text>
+      <Text style={styles.dateText}>{moment(item.date).tz('Asia/Jerusalem').format('DD-MM-YYYY HH:mm')}</Text>
     </View>
   );
 
@@ -58,18 +77,25 @@ const GetAppointments = ({ route, navigation }: Props) => {
       <Image source={logo} style={styles.image} />
       <Text style={styles.title}>Your Appointments</Text>
       <Button 
-          mode="contained" 
-          style={styles.button} 
-          onPress={() => navigation.navigate('SetAppointments', { token })}
-          buttonColor="#ea3e85"
-        >
-          Make new appointment
-        </Button>
+        mode="contained" 
+        style={styles.button} 
+        onPress={() => navigation.navigate('SetAppointments', { token })}
+        buttonColor="#ea3e85"
+      >
+        Make new appointment
+      </Button>
       <FlatList
         data={appointments}
         renderItem={renderItem}
-        keyExtractor={(item, index) =>  index.toString()}
+        keyExtractor={(item, index) => index.toString()}
       />
+      <Snackbar
+        visible={snackbarVisible}
+        onDismiss={() => setSnackbarVisible(false)}
+        duration={3000}
+      >
+        {snackbarMessage}
+      </Snackbar>
     </View>
   );
 };
@@ -82,9 +108,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   image: {
+    marginTop: '5%',
     width: width * 0.25,
     height: width * 0.25,
-    marginBottom: '5%',
+    marginBottom: '3%',
     alignSelf: 'center',
   },
   button: {

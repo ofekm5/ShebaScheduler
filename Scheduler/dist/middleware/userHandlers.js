@@ -9,7 +9,8 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const db_1 = __importDefault(require("../db"));
 const loginHandler = async (req, res, next) => {
     try {
-        const username = req.headers['username'];
+        const initialUsername = req.headers['username'];
+        const username = initialUsername?.toLowerCase();
         const password = req.headers['password'];
         const tokenPrivateKey = process.env.TOKEN_PRIVATE_KEY;
         const exists = await checkIfExistsInDB(username, password);
@@ -39,7 +40,8 @@ async function checkIfExistsInDB(username, password) {
 }
 const signupHandler = async (req, res, next) => {
     try {
-        const username = req.headers['username'];
+        const initialUsername = req.headers['username'];
+        const username = initialUsername?.toLowerCase();
         const password = req.headers['password'];
         try {
             const exists = await checkIfExistsInDB(username, password);

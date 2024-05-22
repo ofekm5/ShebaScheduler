@@ -91,10 +91,15 @@ const getAppo = async (req: Request<{}, {}, {}, iToken>, res: Response, next: Ne
             SELECT * FROM "Appointment" WHERE "userID" = $1;
         `;
         const appointmentsResult = await pool.query(appointmentsQuery, [userID]);
-    
-        res.status(200).json({
-            appointments: appointmentsResult.rows,
-        });
+
+        if(appointmentsResult.rows.length > 0){
+            res.status(200).json({
+                appointments: appointmentsResult.rows,
+            });
+        }
+        else{
+            return res.status(404).json({ error: 'Appointments not found' });
+        }
     }
     catch (error) {
         next(error);

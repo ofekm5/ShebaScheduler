@@ -25,25 +25,30 @@ const OTP = ({ route, navigation }: Props) => {
 
   const handleOTP = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/verifyOTP`, {
-        headers: {
-          otp: otp,
-          token: token,
-        },
-      });
-
-      if (response.status === 201) {
-        setSnackbarMessage('OTP verified successfully!');
+      if(otp){
+        const response = await axios.get(`${API_BASE_URL}/api/verifyOTP`, {
+          headers: {
+            otp: otp,
+            token: token,
+          },
+        });
+  
+        if (response.status === 201) {
+          setSnackbarMessage('OTP verified successfully!');
+          setSnackbarVisible(true);
+          setTimeout(() => {
+            setSnackbarVisible(false);
+            navigation.navigate('GetAppointments', { token }); 
+          }, 2000);
+        }
+      }
+      else {
+        setSnackbarMessage('Please enter OTP.');
         setSnackbarVisible(true);
         setTimeout(() => {
           setSnackbarVisible(false);
-          navigation.navigate('GetAppointments', { token }); 
         }, 2000);
       } 
-      else {
-        setSnackbarMessage('OTP verification failed. Please try again. Token:');
-        setSnackbarVisible(true);
-      }
     } 
     catch (error) {
       setSnackbarMessage('OTP verification failed. Please try again.');

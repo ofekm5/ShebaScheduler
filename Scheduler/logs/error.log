@@ -56,3 +56,14 @@
     at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
     at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
 2024-05-21T15:51:00.378Z [31merror[39m: wrong OTP for undefined
+2024-05-22T12:38:26.168Z [31merror[39m: wrong OTP for undefined
+2024-05-22T13:18:23.015Z [31merror[39m: Appointment already taken
+2024-05-22T13:38:19.154Z [31merror[39m: Appointment already taken
+2024-05-22T13:38:23.994Z [31merror[39m: Appointment already taken
+2024-05-22T13:38:38.072Z [31merror[39m: Appointment already taken
+2024-05-22T14:06:50.443Z [31merror[39m: wrong OTP for undefined
+2024-05-22T14:09:56.532Z [31merror[39m: Appointment already taken
+2024-05-22T14:10:28.809Z [31merror[39m: Appointment already taken
+2024-05-22T17:02:16.095Z [31merror[39m: wrong OTP for undefined
+2024-05-22T17:15:36.354Z [31merror[39m: Appointment already taken
+2024-05-22T17:40:32.767Z [31merror[39m: wrong OTP for undefined

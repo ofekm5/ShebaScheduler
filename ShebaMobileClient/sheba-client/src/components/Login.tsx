@@ -20,24 +20,25 @@ const Login = () => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/login`, {
-        headers: {
-          username: username,
-          password: password,
-        },
-      });
-
-      if (response.status === 200) {
-        const { token } = response.data;
-        setSnackbarMessage('Sign In successful!');
-        setSnackbarVisible(true);
-        setTimeout(() => {
-          setSnackbarVisible(false);
-          navigation.navigate('OTP', { token });
-        }, 2000);
-      } 
+      if(username && password){
+        const response = await axios.get(`${API_BASE_URL}/api/login`, {
+          headers: {
+            username: username,
+            password: password,
+          }
+        });
+        if (response.status === 200) {
+          const { token } = response.data;
+          setSnackbarMessage('Sign In successful!');
+          setSnackbarVisible(true);
+          setTimeout(() => {
+            setSnackbarVisible(false);
+            navigation.navigate('OTP', { token });
+          }, 2000);
+        } 
+      }
       else {
-        setSnackbarMessage('Sign In failed. Please try again.');
+        setSnackbarMessage('Please fill in all fields.');
         setSnackbarVisible(true);
         setTimeout(() => {
           setSnackbarVisible(false);
@@ -45,9 +46,11 @@ const Login = () => {
       }
     } 
     catch (error) {
-      //console.error('Login error:', error); 
-      setSnackbarMessage('Sign In failed. Please try again.');
+      setSnackbarMessage(`Sign In failed, please try again`);
       setSnackbarVisible(true);
+      setTimeout(() => {
+        setSnackbarVisible(false);
+      }, 2000);
     }
   };
 

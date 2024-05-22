@@ -16,11 +16,31 @@ const App = () => {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="OTP" component={OTP} />
-          <Stack.Screen name="GetAppointments" component={GetAppointments} />
-          <Stack.Screen name="SetAppointments" component={SetAppointments} />
-          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen 
+            name="Login" 
+            component={Login} 
+            options={{ headerShown: false }}  
+          />
+          <Stack.Screen 
+            name="OTP" 
+            component={OTP} 
+            options={{ headerShown: false }}  
+          />
+          <Stack.Screen 
+            name="GetAppointments" 
+            component={GetAppointments} 
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen 
+            name="SetAppointments" 
+            component={SetAppointments}
+            options={{ headerShown: false }} 
+          />
+          <Stack.Screen 
+            name="Signup" 
+            component={Signup}
+            options={{ headerShown: false }} 
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

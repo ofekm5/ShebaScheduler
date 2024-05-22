@@ -4,7 +4,7 @@ import { Text, Button, Snackbar } from 'react-native-paper';
 import DropDown from 'react-native-paper-dropdown';
 import { Calendar } from 'react-native-calendars';
 import axios from 'axios';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import logo from '@assets/ShebaLogo.png';
 import { API_BASE_URL } from '@env';
@@ -24,6 +24,7 @@ type Props = {
 const SetAppointments = ({ route, navigation }: Props) => {
   const { token } = route.params;
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [markedDates, setMarkedDates] = useState<{ [key: string]: { selected: boolean, selectedColor: string } }>({});
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [timeDropdownVisible, setTimeDropdownVisible] = useState(false);
@@ -32,9 +33,9 @@ const SetAppointments = ({ route, navigation }: Props) => {
   const [snackbarMessage, setSnackbarMessage] = useState('');
 
   const times = [
-    { label: '08:00 AM', value: '08:00' },
-    { label: '12:00 AM', value: '12:00' },
-    { label: '16:00 PM', value: '16:00' },
+    { label: '08:00 AM', value: '11:00' },
+    { label: '12:00 PM', value: '15:00' },
+    { label: '04:00 PM', value: '19:00' },
   ];
 
   const appoType = [
@@ -45,11 +46,24 @@ const SetAppointments = ({ route, navigation }: Props) => {
 
   const handleDayPress = (day: { dateString: string }) => {
     setSelectedDate(day.dateString);
+    setMarkedDates({ [day.dateString]: { selected: true, selectedColor: '#2bb99b' } });
   };
 
   const handleScheduleAppointment = async () => {
     if (selectedDate && selectedTime && selectedType) {
-      const dateTime = moment(`${selectedDate} ${selectedTime}`, 'YYYY-MM-DD HH:mm').toISOString();
+      const selectedDateTime = moment.tz(`${selectedDate} ${selectedTime}`, 'YYYY-MM-DD HH:mm', 'Asia/Jerusalem');
+      const currentDateTime = moment.tz('Asia/Jerusalem');
+
+      if (selectedDateTime.isBefore(currentDateTime)) {
+        setSnackbarMessage('Selected date and time are in the past.');
+        setSnackbarVisible(true);
+        setTimeout(() => {
+          setSnackbarVisible(false);
+        }, 2000);
+        return;
+      }
+
+      const dateTime = selectedDateTime.toISOString();
 
       const appointment = {
         appoDate: dateTime,
@@ -57,10 +71,13 @@ const SetAppointments = ({ route, navigation }: Props) => {
       };
 
       try {
-        const response = await axios.post(`${API_BASE_URL}/api/setAppo`, appointment, {
+        const response = await axios.post(`${API_BASE_URL}/api/appointment`, appointment, {
           headers: {
             token: token,
           },
+          validateStatus: function (status) {
+            return status >= 200 && status < 300 || status === 409;
+          }
         });
 
         if (response.status === 201) {
@@ -68,17 +85,21 @@ const SetAppointments = ({ route, navigation }: Props) => {
           setSnackbarVisible(true);
           setTimeout(() => {
             setSnackbarVisible(false);
+            navigation.navigate('GetAppointments', { token });
           }, 2000);
-        } else {
-          setSnackbarMessage('Failed to schedule appointment. Please try again.');
+        } else if (response.status === 409) {
+          setSnackbarMessage('Appointment already taken.');
           setSnackbarVisible(true);
           setTimeout(() => {
             setSnackbarVisible(false);
           }, 2000);
         }
       } catch (error) {
-        console.error('Error scheduling appointment:', error);
-        setSnackbarMessage('Failed to schedule appointment. Please try again.');
+        if (error instanceof Error) {
+          setSnackbarMessage(`Error scheduling appointment: ${error.message}`);
+        } else {
+          setSnackbarMessage(`Error scheduling appointment.`);
+        }
         setSnackbarVisible(true);
         setTimeout(() => {
           setSnackbarVisible(false);
@@ -100,7 +121,10 @@ const SetAppointments = ({ route, navigation }: Props) => {
     >
       <Image source={logo} style={styles.image} />
       <Text style={styles.title}>Schedule Appointment</Text>
-      <Calendar onDayPress={handleDayPress} />
+      <Calendar
+        onDayPress={handleDayPress}
+        markedDates={markedDates}
+      />
       <View style={styles.dropdownContainer}>
         <DropDown
           label="Select Time"
@@ -155,13 +179,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   image: {
+    marginTop: '5%',
     width: height * 0.15,
     height: height * 0.15,
     marginBottom: '5%',
     alignSelf: 'center',
   },
   dropdownContainer: {
-    //marginBottom: 20,
+    marginTop: '5%',
+    height: height * 0.45,
   },
   title: {
     fontSize: 25,
@@ -171,7 +197,7 @@ const styles = StyleSheet.create({
     color: '#2b296d',
   },
   button: {
-    marginTop: 20,
+    marginTop: '1%',
   },
 });
 
@@ -181,7 +207,7 @@ const pickerSelectStyles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#2bb99b', 
     borderRadius: 4,
     color: 'black',
     marginBottom: 20,
