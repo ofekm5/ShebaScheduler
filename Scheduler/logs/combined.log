@@ -292,3 +292,20 @@
 2024-05-22T19:09:59.272Z [32minfo[39m: Appointment deleted successfully
 2024-05-22T19:10:16.654Z [32minfo[39m: Appointment created successfully
 2024-05-22T19:10:26.968Z [32minfo[39m: Appointment deleted successfully
+2024-05-23T06:51:19.585Z [32minfo[39m: ofekm5 signed up successfully
+2024-05-23T06:51:36.562Z [32minfo[39m: ofekm5 logged in successfully
+2024-05-23T06:51:46.677Z [32minfo[39m: verified user ofekm5 OTP
+2024-05-23T06:52:00.714Z [32minfo[39m: Appointment created successfully
+2024-05-23T06:52:04.756Z [32minfo[39m: Appointment deleted successfully
+2024-05-23T06:52:29.908Z [32minfo[39m: Appointment created successfully
+2024-05-23T06:52:42.823Z [32minfo[39m: Appointment deleted successfully
+2024-05-23T06:56:33.900Z [32minfo[39m: ofekm5 logged in successfully
+2024-05-23T07:06:40.489Z [32minfo[39m: ofek signed up successfully
+2024-05-23T07:06:53.791Z [32minfo[39m: ofek logged in successfully
+2024-05-23T07:07:04.048Z [32minfo[39m: verified user ofek OTP
+2024-05-23T07:07:36.854Z [31merror[39m: wrong OTP for undefined
+2024-05-23T07:07:37.478Z [31merror[39m: wrong OTP for undefined
+2024-05-23T07:07:45.219Z [32minfo[39m: verified user ofek OTP
+2024-05-23T07:08:35.731Z [32minfo[39m: Appointment created successfully
+2024-05-23T07:08:43.437Z [32minfo[39m: Appointment deleted successfully
+2024-05-23T07:09:00.975Z [32minfo[39m: Appointment created successfully

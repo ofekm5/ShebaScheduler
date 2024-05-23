@@ -93,3 +93,5 @@
     at C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:284:15
     at Function.process_params (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:346:12)
     at next (C:\Users\avita\source\repos\ofekm5\ShebaScheduler\Scheduler\node_modules\express\lib\router\index.js:280:10)
+2024-05-23T07:07:36.854Z [31merror[39m: wrong OTP for undefined
+2024-05-23T07:07:37.478Z [31merror[39m: wrong OTP for undefined
