@@ -1,5 +1,4 @@
-# Schedule App
-Fullstack app for managing appointments.
+Fullstack app for managing appointments, originally made for Sheba.
 
 Tech Stack:
 
